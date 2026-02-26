@@ -3,17 +3,17 @@ const http = require("http")
 
 const { createWorker } = require("./mediasoup/worker")
 const { createRouter } = require("./mediasoup/router")
-
 const initWebSocket = require("./signaling/websocket")
-const { lstat } = require("fs")
 
 const app = express()
+
+app.use(express.static("public"))
+
 const server = http.createServer(app)
 
 async function start() {
 
   await createWorker()
-
   await createRouter()
 
   initWebSocket(server)
