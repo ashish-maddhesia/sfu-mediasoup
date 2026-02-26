@@ -16,3 +16,7 @@ async function createProducer(transport, kind, rtpParameters) {
 module.exports = {
   createProducer
 }
+
+producer.on("transportclose", () => {
+  console.log("Producer closed")
+})

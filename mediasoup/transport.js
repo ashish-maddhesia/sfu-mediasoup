@@ -28,3 +28,11 @@ async function createTransport() {
 module.exports = {
   createTransport
 }
+
+transport.on("dtlsstatechange", state => {
+  console.log("DTLS State:", state)
+})
+
+transport.on("close", () => {
+  console.log("Transport closed")
+})
